@@ -57,18 +57,14 @@ Designed for **reliable embedded systems and long-running devices**.
 
 Example connection:
 
- LGT8F328P Mini                  M590
- --------------             ---------------
-|              |           |               |
-|           RX |--[R=100]--| TX            |
-|           TX |--[R=100]--| RX            |
-|              |           |               |
-|         PIN12|--[R=100]--| SLEEP         |
-|         PIN9 |--[R=100]--| POWER ON/OFF  |
-|         PIN8 |--[R=100]--| EMERGENCY     |
-|              |           |               |
- --------------             ---------------
-** R=100 - resistor 100 Ohm 0,1W (0603).
+ LGT8F328P Mini ->  M590
+ RX -> RESISTOR 100 Ohm -> TX
+ TX -> RESISTOR 100 Ohm -> RX
+ PIN12 -> RESISTOR 100 Ohm -> SLEEP
+ PIN9 -> RESISTOR 100 Ohm -> POWER ON/OFF
+ PIN- -> RESISTOR 100 Ohm -> EMERGENCY 
+ 
+ Use decoupling resistors 100 Ohm 0,1W (0603).
 
 WARNING!
 I. The M590 modem requires a **stable power supply capable of handling current peaks** during transmission.
@@ -271,5 +267,6 @@ This library is provided as open-source software.
 For companies developing commercial devices, a professional
 version with extended features and engineering support
 is available under a commercial license.
+
 
 ---
