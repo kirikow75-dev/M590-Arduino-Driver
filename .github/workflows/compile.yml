@@ -1,0 +1,35 @@
+name: Arduino Library Compile Check
+
+on:
+push:
+pull_request:
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
+
+  - name: Setup Arduino CLI
+    uses: arduino/setup-arduino-cli@v1
+
+  - name: Install cores
+    run: |
+      arduino-cli core update-index
+      arduino-cli core install arduino:avr
+
+  - name: Compile examples
+    run: |
+      arduino-cli compile --fqbn arduino:avr:uno examples/BasicUsage
+      arduino-cli compile --fqbn arduino:avr:uno examples/SendSMS
+      arduino-cli compile --fqbn arduino:avr:uno examples/ReceiveSMS
+      arduino-cli compile --fqbn arduino:avr:uno examples/SendCall
+      arduino-cli compile --fqbn arduino:avr:uno examples/ReceiveCall
+      arduino-cli compile --fqbn arduino:avr:uno examples/UserCommands
+      arduino-cli compile --fqbn arduino:avr:uno examples/SleepMode
+      arduino-cli compile --fqbn arduino:avr:uno examples/HardwareReset
+      arduino-cli compile --fqbn arduino:avr:uno examples/FullInit
+```
