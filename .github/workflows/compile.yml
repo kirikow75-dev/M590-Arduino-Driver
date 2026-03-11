@@ -1,21 +1,17 @@
 name: Compile Arduino Examples
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
-  build:
+  compile:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Arduino CLI
-        uses: arduino/setup-arduino-cli@v2
+      - uses: arduino/setup-arduino-cli@v2
 
-      - name: Install Arduino AVR core
+      - name: Install AVR core
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
@@ -23,7 +19,7 @@ jobs:
       - name: Install this library
         run: |
           mkdir -p ~/Arduino/libraries
-          ln -s $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
+          cp -r $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
 
       - name: Compile examples
         run: |
