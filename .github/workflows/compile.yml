@@ -15,5 +15,4 @@ jobs:
           fqbn: arduino:avr:uno
           sketch-paths: |
             examples/BasicUsage
-           
-            
+            examples/SendSMS            
