@@ -15,3 +15,12 @@ jobs:
           fqbn: arduino:avr:uno
           sketch-paths: |
             examples/BasicUsage
+            examples/SendSMS
+            examples/ReceiveSMS
+            examples/SendCall
+            examples/ReceiveCall
+            examples/UserCommands
+            examples/SleepMode
+            examples/HardwareReset
+            examples/FullInit            
+            
