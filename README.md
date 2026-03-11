@@ -186,7 +186,8 @@ void loop() {
 
     if (modem.isIncomingSMS()) {
 
-        String sms = modem.getSMS();
+		char* number = modem.getSMSNumber();
+		char* text = modem.getSMSText();
 
         // Process message
 
@@ -275,5 +276,6 @@ is available under a commercial license.
 
 
 ---
+
 
 
