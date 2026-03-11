@@ -13,7 +13,7 @@
 #pragma once
 #include <Arduino.h>
 #include <avr/pgmspace.h>
-#include "fast_gpio.h"
+#include <fast_gpio.h>
 
 /* ===== Modem control pins ===== */
 #define M590_POWER_PIN 8             	// POWER ON/OFF. 
@@ -1138,5 +1138,6 @@ bool M590::waitReady() {
     cmdTimerMs = getMillis(); 
     return true;
 }
+
 
 //===== END =======
