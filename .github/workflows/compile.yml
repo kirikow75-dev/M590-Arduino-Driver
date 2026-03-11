@@ -15,20 +15,24 @@ jobs:
       - name: Setup Arduino CLI
         uses: arduino/setup-arduino-cli@v1
 
-      - name: Install cores
+      - name: Install Arduino AVR core
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
 
+      - name: Install this library
+        run: |
+          mkdir -p ~/Arduino/libraries
+          cp -r $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
+
       - name: Compile examples
         run: |
-          arduino-cli compile --fqbn arduino:avr:uno examples/BasicUsage
-          arduino-cli compile --fqbn arduino:avr:uno examples/SendSMS
-          arduino-cli compile --fqbn arduino:avr:uno examples/ReceiveSMS
-          arduino-cli compile --fqbn arduino:avr:uno examples/SendCall
-          arduino-cli compile --fqbn arduino:avr:uno examples/ReceiveCall
-          arduino-cli compile --fqbn arduino:avr:uno examples/UserCommands
-          arduino-cli compile --fqbn arduino:avr:uno examples/SleepMode
-          arduino-cli compile --fqbn arduino:avr:uno examples/HardwareReset
-          arduino-cli compile --fqbn arduino:avr:uno examples/FullInit
-          
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/BasicUsage
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SendSMS
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/ReceiveSMS
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SendCall
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/ReceiveCall
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/UserCommands
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SleepMode
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/HardwareReset
+          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/FullInit
