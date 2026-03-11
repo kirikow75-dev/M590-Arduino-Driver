@@ -58,10 +58,15 @@ Designed for **reliable embedded systems and long-running devices**.
 Example connection:
 
  LGT8F328P Mini ->  M590
+ 
  RX -> RESISTOR 100 Ohm -> TX
+ 
  TX -> RESISTOR 100 Ohm -> RX
+ 
  PIN12 -> RESISTOR 100 Ohm -> SLEEP
+ 
  PIN9 -> RESISTOR 100 Ohm -> POWER ON/OFF
+ 
  PIN- -> RESISTOR 100 Ohm -> EMERGENCY 
  
  Use decoupling resistors 100 Ohm 0,1W (0603).
@@ -270,3 +275,4 @@ is available under a commercial license.
 
 
 ---
+
