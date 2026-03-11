@@ -90,7 +90,7 @@ bool registered = false;
 
 while (millis() - tReg < 60000) {   // 60 sec timeout
   
-  if (ModemSendAndCompare(F("AT+CREG?"), F("+CREG:"), 1, 10000)) { 
+  if (sendAndCompare(F("AT+CREG?"), F("+CREG:"), 1, 10000)) { 
     
     const char* buf = modem->getUartBuf();
     if (buf[0]) {
@@ -117,10 +117,10 @@ int M590FUNC::fullInit() {
   while (modem->isBusy()) modem->process();
   if (modem->getStatus() != M590Status::M590_READY) return 0;
 
-  if (!ModemSendAndCompare(F("AT+CPIN?"), F("READY"), 1))
+  if (!sendAndCompare(F("AT+CPIN?"), F("READY"), 1))
     return -1;
 
-  if (!ModemIsRegistred())
+  if (!isRegistred())
     return -2;
 
   return 1;
