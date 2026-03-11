@@ -1,4 +1,4 @@
-name: Arduino Library Compile Check
+name: Compile Arduino Examples
 
 on:
   push:
@@ -12,8 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Arduino CLI
-        uses: arduino/setup-arduino-cli@v1
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
 
       - name: Install Arduino AVR core
         run: |
@@ -23,7 +23,7 @@ jobs:
       - name: Install this library
         run: |
           mkdir -p ~/Arduino/libraries
-          cp -r $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
+          ln -s $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
 
       - name: Compile examples
         run: |
