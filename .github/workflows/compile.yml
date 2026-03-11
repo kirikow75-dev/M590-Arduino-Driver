@@ -21,14 +21,8 @@ jobs:
           mkdir -p ~/Arduino/libraries
           cp -r $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
 
-      - name: Compile examples
+      - name: Compile all examples
         run: |
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/BasicUsage
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SendSMS
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/ReceiveSMS
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SendCall
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/ReceiveCall
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/UserCommands
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/SleepMode
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/HardwareReset
-          arduino-cli compile --fqbn arduino:avr:uno ~/Arduino/libraries/M590Driver/examples/FullInit
+          for sketch in ~/Arduino/libraries/M590Driver/examples/*/*.ino; do
+            arduino-cli compile --fqbn arduino:avr:uno "$sketch"
+          done
