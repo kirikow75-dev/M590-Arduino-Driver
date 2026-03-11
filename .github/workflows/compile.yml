@@ -1,28 +1,25 @@
-name: Compile Arduino Examples
+name: Compile Examples
 
 on: [push, pull_request]
 
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: arduino/setup-arduino-cli@v2
-
-      - name: Install AVR core
-        run: |
-          arduino-cli core update-index
-          arduino-cli core install arduino:avr
-
-      - name: Install this library
-        run: |
-          mkdir -p ~/Arduino/libraries
-          cp -r $GITHUB_WORKSPACE ~/Arduino/libraries/M590Driver
-
-      - name: Compile all examples
-        run: |
-          for sketch in ~/Arduino/libraries/M590Driver/examples/*/*.ino; do
-            arduino-cli compile --fqbn arduino:avr:uno "$sketch"
-          done
+      - name: Compile Arduino sketches
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:uno
+          sketch-paths: |
+            examples/BasicUsage
+            examples/SendSMS
+            examples/ReceiveSMS
+            examples/SendCall
+            examples/ReceiveCall
+            examples/UserCommands
+            examples/SleepMode
+            examples/HardwareReset
+            examples/FullInit
