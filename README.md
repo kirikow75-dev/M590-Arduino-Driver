@@ -67,7 +67,7 @@ Example connection:
  
  PIN9 -> RESISTOR 100 Ohm -> POWER ON/OFF
  
- PIN- -> RESISTOR 100 Ohm -> EMERGENCY 
+ PIN8 -> RESISTOR 100 Ohm -> EMERGENCY 
  
  Use decoupling resistors 100 Ohm 0,1W (0603).
 
@@ -275,4 +275,5 @@ is available under a commercial license.
 
 
 ---
+
 
