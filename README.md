@@ -3,6 +3,7 @@
 ![Platform](https://img.shields.io/badge/platform-Arduino-blue)
 ![Status](https://img.shields.io/badge/status-stable-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![Compile Examples](https://github.com/kirikow75-dev/M590-Arduino-Driver/actions/workflows/compile.yml/badge.svg)](https://github.com/kirikow75-dev/M590-Arduino-Driver/actions/workflows/compile.yml)
 
 Lightweight asynchronous driver for the **M590 GSM modem** for Arduino platforms.
 
@@ -276,6 +277,7 @@ is available under a commercial license.
 
 
 ---
+
 
 
 
